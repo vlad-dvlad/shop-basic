@@ -36,4 +36,15 @@ export class ProductService {
             throw new Error('Error in product service')
         }
     }
+
+    static async getSingleProduct(id: number): Promise<IProduct> {
+        try {
+            const response = await apiClient.get<IProduct>(`/products/${id}`)
+
+            return response.data;
+        } catch (e) {
+            console.error(e)
+            throw new Error('Error in product service')
+        }
+    }
 }

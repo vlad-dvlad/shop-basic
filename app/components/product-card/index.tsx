@@ -4,22 +4,26 @@ import Image from 'next/image'
 import { Card } from 'antd';
 import Meta from 'antd/es/card/Meta';
 import noImage from '../../../public/no-image.webp';
+import Link from 'next/link';
 
 
-type IProps = Pick<IProduct, 'name' | 'description'>
+type IProps = Pick<IProduct, 'id' | 'name' | 'description'>
 
-const ProductCard: FC<IProps> = ({ name, description }) => {
+const ProductCard: FC<IProps> = ({ id, name, description }) => {
 
     return (
-        <Card
-            hoverable
-            className='border-black'
-            cover={
-                <Image src={noImage} alt={name} priority width={200} height={200} />
-            }
-        >
-            <Meta title={name} description={description} />
-        </Card>
+        <Link href={`/product-list/${id}`}>
+            <Card
+                hoverable
+                className='border-black'
+                cover={
+                    <Image src={noImage} alt={name} priority width={200} height={200} />
+                }
+            >
+                <Meta title={name} description={description} />
+            </Card>
+        </Link>
+
     );
 };
 

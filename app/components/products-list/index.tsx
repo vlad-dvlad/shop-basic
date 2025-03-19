@@ -5,7 +5,6 @@ import { Pagination } from 'antd';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { IProduct } from '@/app/(models)/product';
 
-
 interface IProps {
     total: number;
     pageSize: number;
@@ -29,7 +28,7 @@ const ProductsList: FC<IProps> = ({ total, currentPage, pageSize, data }) => {
             <ul className='grid grid-cols-4 gap-3 min-h-[1550px]'>
                 {data.map((item) => (
                     <li key={item.name + item.description}>
-                        <ProductCard name={item.name} description={item.description} />
+                        <ProductCard id={item.id} name={item.name} description={item.description} />
                     </li>
                 ))}
             </ul>
